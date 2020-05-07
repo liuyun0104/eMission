@@ -1,0 +1,161 @@
+<!DOCTYPE html><head>
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>eMission</title>
+
+	</head>
+	
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+	
+	<script src="lib/js/d3_2.7.0/d3.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.geom.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.layout.js"></script>
+     <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
+    <script src="lib/js/jquery-1.6.2.min.js"></script>
+	<script src="lib/js/jquery.transit.min.js"></script>
+	<body>
+
+        <div id="wrapper">
+			<div id="banner-wrapper">
+    		<div id="banner">
+            	<a href="index.html"><img src="images/logo.png" /></a>
+                <div id="login">
+                	<p>Sign Up | Login</p>
+                </div>
+            </div><!-- end of banner div -->
+			
+		</div><!-- end of banner-wrapper -->
+			<div id="container">
+				
+				<div id="content">
+                <h1 class="title">
+                Lower your energy consumption.<br>
+				Minimize your carbon footprint.
+                </h1>
+				<svg width="960px" height="680px">
+				
+					<rect id="compare" class="panel" x="0" y="20" width="240" height="480" style="fill:#d2d2d2; opacity:0"/>
+					
+					<g id="compare" class="step" transform="translate(20, 100)" style="border: solid 1px red;">
+						<circle cx="100" cy="100" r="100" stroke="#EEE2C1" stroke-width="1"  fill="none" stroke-dasharray="2,2"/>
+						<circle cx="100" cy="100" r="95" stroke="#EEE2C1" stroke-width="1"  fill="none"/>
+						<g display="inline" id="compareIcon">
+							<rect x="48.49" y="66.193" fill="#EEE2C1" width="16.667" height="55.555"/>
+							<rect x="92.102" y="49.527" fill="#EEE2C1" width="16.667" height="72.221"/>
+							<rect x="135.713" y="82.86" fill="#EEE2C1" width="16.666" height="38.888"/>
+							
+								<line fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="31.824" y1="121.748" x2="175.156" y2="121.748"/>
+						</g>
+						
+						<!--<text x="120" y="250" class="textH1 green" style="text-anchor: middle;">Compare</text>
+						<text x="0" y="270" class="textH3 lgtgrey" style="text-anchor: left;">
+							<tspan x="-20" dy="18">Take a quick electric device usage survey.</tspan>
+							<tspan x="-20" dy="18">Get your device power consumption estimation.</tspan>
+							<tspan x="-20" dy="18">Find out saving tips right for you. </tspan>
+						</text>-->
+					</g>
+					<g id="compare2" class="step" transform="translate(5, 100)">
+						<foreignobject x="0" y="220" width="230" height="250" border="1">
+							<p class="textH1 green" style="text-align:center; margin: 5px auto 10px auto;">Overview</p>
+							<p class="textH4 lgtgrey">Compare yourself with others.</p>
+							<p class="textH4 lgtgrey">Find your power consumption ranking.</p>
+							<a href="overview.html"><div class="btn" >Start Here</div></a>
+						</foreignobject>
+					</g>
+					
+					
+					<rect id="analyze" class="panel" x="360" y="20" width="240" height="480" style="fill:#d2d2d2; opacity:0"/>
+					<g id="analyse" class="step"  transform="translate(380, 100)">
+						<circle cx="100" cy="100" r="100" stroke="#EEE2C1" stroke-width="1"  fill="none" stroke-dasharray="2,2"/>
+						<circle cx="100" cy="100" r="95" stroke="#EEE2C1" stroke-width="1"  fill="none"/>
+						<g display="inline" id="analyseIcon">
+							<rect x="85.724" y="69.489" fill="#EEE2C1" width="34.401" height="11.199"/>
+							<rect x="85.724" y="87.089" fill="#EEE2C1" width="34.401" height="11.2"/>
+							<rect x="85.724" y="105.489" fill="#EEE2C1" width="34.401" height="40"/>
+						</g>
+						<circle display="inline" fill="#EEE2C1" cx="60.891" cy="53.72" r="4"/>
+						<circle display="inline" fill="#EEE2C1" cx="151.057" cy="73.489" r="4"/>
+						<circle display="inline" fill="#EEE2C1" cx="46.258" cy="103.889" r="4"/>
+						
+							<line display="inline" fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="47.058" y1="104.689" x2="95.857" y2="122.289"/>
+						
+							<line display="inline" fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="64.527" y1="55.496" x2="101.789" y2="77.661"/>
+						
+							<line display="inline" fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="116.658" y1="93.488" x2="149.457" y2="74.289"/>
+						
+						<!--<text x="120" y="250" class="textH1 green" style="text-anchor: middle;">Analyse</text>
+						<text x="0" y="270" class="textH3 lgtgrey" style="text-anchor: left;">
+							<tspan x="-20" dy="18">Take a quick electric device usage survey.</tspan>
+							<tspan x="-20" dy="18">Get your device power consumption estimation.</tspan>
+							<tspan x="-20" dy="18">Find out saving tips right for you. </tspan>
+						</text>-->
+					</g>
+					<g id="analyse2" class="step" transform="translate(350, 100)">	
+						<foreignobject x="0" y="220" width="260" height="250" border="1">
+							<p class="textH1 green" style="text-align:center; margin: 5px auto 10px auto;">Analyze</p>
+							<p class="textH4 lgtgrey">Take the quick electric device usage survey.</p>
+							<p class="textH4 lgtgrey">Find out your actual power consumption.</p>
+							<a href="analyze.html"><div class="btn" >Start Here</div></a>
+						</foreignobject>
+					</g>
+					
+					<rect id="track" class="panel" x="720" y="20" width="240" height="480" style="fill:#d2d2d2; opacity:0"/>
+					<g id="track" class="step"  transform="translate(740, 100)">
+						<circle cx="100" cy="100" r="100" stroke="#EEE2C1" stroke-width="1"  fill="none" stroke-dasharray="2,2"/>
+						<circle cx="100" cy="100" r="95" stroke="#EEE2C1" stroke-width="1"  fill="none"/>
+						<g id="trackIcon">
+							<circle fill="none" stroke="#EEE2C1" stroke-width="6" stroke-miterlimit="10" cx="49.334" cy="81" r="6.667"/>
+							<circle fill="none" stroke="#EEE2C1" stroke-width="6" stroke-miterlimit="10" cx="85.112" cy="129" r="6.666"/>
+							<circle fill="none" stroke="#EEE2C1" stroke-width="6" stroke-miterlimit="10" cx="120.89" cy="95.334" r="6.667"/>
+							<circle fill="none" stroke="#EEE2C1" stroke-width="6" stroke-miterlimit="10" cx="156.668" cy="124.335" r="6.667"/>
+							<line fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="52.557" y1="85.777" x2="81.446" y2="123.112"/>
+							<line fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="89.444" y1="124.444" x2="116.557" y2="100"/>
+							<line fill="none" stroke="#EEE2C1" stroke-width="2" stroke-miterlimit="10" x1="124.112" y1="98.667" x2="150.336" y2="121.334"/>
+						</g>
+						
+						<!--<text x="120" y="250" class="textH1 green" fill="#a9c14e" style="text-anchor: middle;">Track</text>
+						<text x="0" y="270" class="textH3 lgtgrey" fill="#bcbdc0" style="text-anchor: left;">
+							<tspan x="-20" dy="18">Take a quick electric device usage survey.</tspan>
+							<tspan x="-20" dy="18">Get your device power consumption estimation.</tspan>
+							<tspan x="-20" dy="18">Find out saving tips right for you. </tspan>
+						</text>-->
+						</g>
+					<g id="track2" class="step" transform="translate(700, 100)">
+						<foreignobject x="0" y="220" width="280" height="250" border="1">
+							<p class="textH1 green" style="text-align:center; margin: 5px auto 10px auto;">Track</p>
+							<p class="textH4 lgtgrey">Track actual usage with your power company.</p>
+							<p class="textH4 lgtgrey">Exchange saving tips with friends and family.</p>
+							<a href="track.html"> <div class="btn" >Start Here</div></a>
+						</foreignobject>
+					</g>
+					<!--<line x1="200" y1="300" x2="360" y2="300"  style="stroke-dasharray: 2,2; stroke: #EEE2C1; stroke-width: 2;">-->
+				</svg>
+
+
+				
+				</div><!-- end of content -->
+			</div><!-- end of container -->
+			
+		</div><!-- end of banner -->
+	<div id="footer">
+       
+      
+      </div><!-- end of footer-->
+      
+     
+  
+      <div id="footer_bar">
+    
+    </div><!-- end of footer_bar -->
+    
+         </div><!-- end of wrapper div -->
+
+		 </body>
+		 </html>
+         
+         <script src="js/frontpage.js"></script>

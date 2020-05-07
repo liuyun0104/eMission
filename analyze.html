@@ -1,0 +1,1301 @@
+<!DOCTYPE html><head>
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>eMission</title>
+
+	</head>
+	
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+	
+	<script src="lib/js/d3_2.7.0/d3.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.geom.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.layout.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
+    <script src="lib/js/jquery-1.6.2.min.js"></script>
+	<script src="lib/js/jquery.transit.min.js"></script>
+	<body>
+
+        <div id="wrapper">
+			<div id="banner-wrapper">
+    		<div id="banner">
+            	<a href="index.html"><img src="images/logo.png" /></a>
+                <div id="login">
+                	<p>Sign Up | Login</p>
+                </div>
+            </div><!-- end of banner div -->
+			
+		</div><!-- end of banner-wrapper -->
+		<div id="selection-wrapper">
+					<div id="menu">
+						<ol>
+							<li>
+							<a href="overview.html"><img src="images/menu_compare.png" alt="compare"><br>
+							Overview</a></li>
+							<li class="active">
+							<img src="images/menu_analyse.png" alt="analyse"><br>
+							Analyze</li>
+							<li>
+							<a href="track.html"><img src="images/menu_track.png" alt="track"><br>
+							Track</a>
+							</li>
+						</ol>
+                         <div id="tipNum" class="circle">
+                    	<p>1</p>
+                    </div>
+					</div><!-- end of menu -->
+					
+				</div><!-- end of selection-wrapper -->
+			<div id="container">
+				<div id="progress">
+                    <ol class="progtrckr" data-progtrckr-steps="6">
+						<li class="progtrckr-done" id="coolingLi">Heating <br>& Cooling</li><!--
+					 --><li class="progtrckr-todo" id="laundryLi">Laundry & Bathroom<br> Appliances</li><!--
+					 --><li class="progtrckr-todo" id="lightingLi">Lighting</li><!--
+					 --><li class="progtrckr-todo" id="entertainmentLi">Entertainment <br>& Home Office</li><!--
+					 --><li class="progtrckr-todo" id="kitchenLi">Kitchen Appliance</li><!--
+					 --><li class="progtrckr-todo" id="analysis_resultLi">Result</li>
+					 
+					</ol>
+				</div><!-- end of progress -->
+				
+				
+				<div id="content">
+				<div id="cooling" class="category">
+                	<div id="ac">
+                        <div id="question">
+                        <p>It's almost summer time. Are you using an <br /><span> Air Conditioner </span> now? </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                        	<table width="100%">
+                            	<tr>
+                                	<td width="25%">
+                           			<img src="images/acC_a.png" id="acCentral">
+                           			</td>
+                                    <td width="25%">
+                          			<img src="images/acWinL_a.png" id="acWinL">
+                    				</td>
+                                    <td width="25%">
+                          			<img src="images/acWinM_a.png" id="acWinM">
+                    				</td>
+                                    <td width="25%">
+                          			<img src="images/acWinS_a.png" id="acWinS">
+                    				</td>
+                                 </tr>
+                                 <tr>
+                                 	<td colspan="4" style="padding-top:35px;"><p><span>Air Conditioner Usage: </span></p></td>
+                                 </tr>
+                                 <tr>
+                                 <td colspan="2">
+                                     <p> Temperature:  
+                                     <select name="acTemp" id="acTemp">
+											<option value="60">60</option>
+											<option value="65">65</option>
+											<option value="70">70</option>
+                                            <option value="75">75</option>
+                                            <option value="80">80</option>
+										</select> &deg;F</p>
+                                    </td>
+                                        
+                                    <td colspan="2">
+                                   	<p> Usage / day:   <input type="text" name="number" id="acTime" class="bulb"  size="3" value="0"> Hours</p>
+                                    </td>
+                                   </tr>
+                                 
+                               </table>
+                        </div>
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #ac -->
+                   
+                   <div id="fan" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Other than AC, are you using a <br /><span> fan </span>right now? </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                        	<table width="100%">
+                            	<tr>
+                                	<td>
+                                    <img src="images/fan.png" id="fan">
+                                    </td>
+                                 </tr>
+                                 <tr>                                       
+                                    <td style="padding-top: 30px;">
+                                   	<p> Usage / day:   <input type="text" name="number" id="fanTime" class="bulb"  size="3" value="0"> Hours</p>
+                                    </td>
+                                   </tr>
+                                 
+                               </table>
+                        </div>
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #fan -->
+                   
+					 <div id="result" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Heating & Cooling Power Consumption </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                           <table width="60%" id="resultTb">
+                            	
+                                  <tr>
+                                  	<td id="acIcon" width="65">
+                                    	<img>
+                                    </td>
+                                  	<td id="acCost" width="35">
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td id="fanIcon">
+                                    	<img src="images/fan_s.png">
+                                    </td>    
+                                    <td id="fanCost">
+                                    </td>
+                                   </tr>
+									
+								<tr><td></td>
+                                <td id="totalCoolingCost">
+                           			</td>
+                                 </tr>
+                               </table> 
+                                                         
+                        </div>
+                        
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next category</div>
+                    </div><!-- end of #cooling result-->
+                  </div><!-- end of cooling -->
+					
+				
+				
+				<div id="laundry" class="category inactiveQuestion">
+                	<div id="washer">
+                        <div id="question">
+                        <p>Are you using a <br /><span> Front-load</span> or <span>Top-load </span><br /> washing machine? </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                        	<table width="100%">
+                            	<tr><td width="50%">
+                           			<img src="images/washerF_a.png" id="washerF">
+                           			</td>
+                                    <td width="50%">
+                          			<img src="images/washerT_a.png" id="washerT">
+                    				</td>
+                                 </tr>
+                               </table>
+                        </div>
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #washer -->
+                    <div id="temperature" class="inactiveQuestion">
+                        <div id="question">
+                        <p>What <br /><span> water temperatur</span> <br>do you usually select when washing clothes? </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                        	<table width="100%">
+                            	<tr><td width="33%">
+                           			<img src="images/waterH_a.png" id="waterH">
+                           			</td>
+                                    <td width="33%">
+                          			<img src="images/waterM_a.png" id="waterM">
+                    				</td>
+                                    <td width="33%">
+                          			<img src="images/waterL_a.png" id="waterL">
+                    				</td>
+                                 </tr>
+                               </table>
+                        </div>
+                        <div id="monthlyCost">
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                    </div><!-- end of #temperature-->
+                     <div id="loads" class="inactiveQuestion">
+                        <div id="question">
+                        <p>How many<br /><span> loads of laundry</span><br> do you usually have per month? </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                            <img src="images/basket_e.png" id="loads" class="loadsInactive"/>
+                               
+                        </div>
+                         <table id="laundryLoads" class="numBtn" style="text-align:center;">
+                                <tr>
+                                    <td class="numBtnMinus">-</td>
+                                    <td class="numBtnResult">0</td>
+                                    <td class="numBtnPlus">+</td>
+                                </tr>
+                            </table>
+                        <div id="monthlyCost">
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                    </div><!-- end of #loads-->
+                    
+                    <div id="dryer" class="inactiveQuestion">
+                        <div id="question">
+                        <p>How do you <br /><span> dry your clothes</span><br> usually? </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                           <table width="100%">
+                            	<tr><td width="50%">
+                           			<img src="images/dryer.png" id="dryerD">
+                           			</td>
+                                    <td width="50%">
+                          			<img src="images/hanger.png" id="dryerH">
+                    				</td>
+                                 </tr>
+                                  <tr>
+                                  	<td>
+                                     <table id="dryerD" class="numBtn" style="text-align:center;">
+                                        <tr>
+                                            <td class="numBtnMinus">-</td>
+                                            <td class="numBtnResult">0</td>
+                                            <td class="numBtnPlus">+</td>
+                                        </tr>
+                                   	 </table>
+                                    </td>
+                                        
+                                    <td>
+                                   	 <table id="dryerH" class="numBtn" style="text-align:center;">
+                                            <tr>
+                                                <td class="numBtnMinus">-</td>
+                                                <td class="numBtnResult">0</td>
+                                                <td class="numBtnPlus">+</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                               </table> 
+                               
+                               <div id="displayLoads" style="width:100%; height: 80px; position:relative; margin-top:20px; text-align:center;">
+
+                               </div>                              
+                        </div>
+                        
+                        <div id="monthlyCost">
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                    </div><!-- end of #dryer-->
+					
+					 <div id="shower" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Do you usually take a nice, relaxing, hot<br>
+						<span>shower</span> after a long day work, or begin your<br>
+						exciting new day with a refreshing <span>shower? </span> </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                           <table width="100%">
+                            	<tr><td colspan="2">
+                           			<img src="images/shower.png" style="margin: 20px auto;">
+                           			</td>
+                                 </tr>
+                                  <tr>
+                                  	<td>
+                                     <p> Time:  <input type="text" name="number" id="showerTime" class="bulb"  size="3" value="0"> Minutes</p>
+                                    </td>
+                                        
+                                    <td>
+                                   	<p> Showers / Week:  <input type="text" name="number" id="showerFreq" class="bulb"  size="3" value="0"> Times</p>
+                                    </td>
+                                </tr>
+                               </table> 
+                                                    
+                        </div>
+                        
+                        <div id="monthlyCost">
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                    </div><!-- end of #shower-->
+					
+					 <div id="bath" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Do you reward yourself a nice<br>
+						<span>bath</span><br>
+						after a long day at work once a while?</p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                           <table width="100%">
+                            	<tr><td colspan="2">
+                           			<img src="images/bath.png" style="margin: 20px auto;">
+                           			</td>
+                                 </tr>
+                                  <tr>
+                                  	<td>
+                                     <p>Bath Size:
+										<select name="bathsize" id="bathSize">
+											<option value="25">25</option>
+											<option value="35">35(typical)</option>
+											<option value="45">45</option>
+										</select> Gallon</p>
+                                    </td>
+                                        
+                                    <td>
+                                   	<p> Bath / Week:  <input type="text" name="number" id="bathFreq" class="bulb"  size="3" value="0"> Times</p>
+                                    </td>
+                                </tr>
+                               </table> 
+                                                         
+                        </div>
+                        
+                        <div id="monthlyCost">
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                    </div><!-- end of #bath-->
+					
+					 <div id="result" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Laundry & Bathroom Appliance Power Consumption </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                        
+                         <table width="60%" id="resultTb">
+                            	
+                                  <tr>
+                                  	<td id="washerIcon" width="65">
+                                    	<img>
+                                    </td>
+                                  	<td id="washerCost" width="35">
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td id="dryerIcon">
+                                    	<img src="images/dryer_s.png">
+                                    </td>    
+                                    <td id="dryerCost">
+                                    </td>
+                                  </tr>
+                                  
+								 <tr>
+                                    <td id="showerIcon">
+                                    	<img src="images/shower_s.png">
+                                    </td>    
+                                    <td id="showerCost">
+                                    </td>
+                                 </tr>
+                                 
+                                 <tr>
+                                    <td id="bathIcon">
+                                    	<img src="images/bath_s.png">
+                                    </td>    
+                                    <td id="bathCost">
+                                    </td>
+                                 </tr>
+                                   
+								<tr><td></td>
+                                <td id="totalLaundryCost">
+                           			</td>
+                                 </tr>
+                               </table> 
+                                                       
+                        </div>
+                        
+                        <div id="monthlyCost">
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next category</div>
+                    </div><!-- end of #laundry result-->
+					
+					
+				</div><!-- end of #laundry -->
+				
+				<div id="lighting" class="category inactiveQuestion">
+					<div id="question">
+                    <!--<p>Lighting is the third-biggest energy user in most homes. </p>-->
+                    <p>Please choose the<br /><span>bulb type</span>, <span>number of bulbs</span> and <span>usage</span> of your lighting. </p>
+					</div><!-- end of question -->
+					<!--<table width="50%" height="100" style="text-align:center; margin: 0 auto;">
+                    <tr><td width="33%">
+                    <div id="basicBulb" class="bulbBlock"><img src="images/icon_bulb1.png"><p>Basic <br> Incandescent Bulb</p></div></td>
+                    <td width="33%">
+                    <div id="cflBulb" class="bulbBlock"><img src="images/icon_bulb2.png"><p>Fluorescen <br> (CFL) Bulb</p></div></td>
+                    <td width="33%">
+					<div id="ledBulb" class="bulbBlock"><img src="images/icon_bulb3.png"><p>LED<br>Bulb</p></div></td></tr></table>
+                    -->
+                    <table id="bulbTb">
+                    <tr id="bulbB1" class="bulbB  bulbTr">
+                    	<td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb1.png">
+                        </td>
+                    	<td width="20%">
+                      		<select name="Bulb Type" id="bulbType" class="bulb" value="bulbB" onchange="dyOption( this, this.id,'bulbWa')" style="display:none;">  </select></p>
+                         <p>Basic Incandescent Bulb</p>
+                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                     <tr id="bulbB2" class="bulbB bulbTr" style="display:none;">
+                    	<td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb1.png">
+                        </td>
+                    	<td width="20%">
+                       <!--<p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                         <p>Basic Incandescent Bulb</p>
+                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                    
+                     <tr id="bulbB3" class="bulbTr bulbTr" style="display:none;">
+                    	<td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb1.png">
+                        </td>
+                    	<td width="20%">
+                       <!--<p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                         <p>Basic Incandescent Bulb</p>
+                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                    <tr><td  class="bulbB" colspan="6" style="background-color:#7db8b5; opacity:0.65;">
+                    	<p class="darkgrey" id="add">+ Add more Basic Incandescent Bulb Group</p>
+                    </td></tr>
+                  <tr id="bulbCFL1" class="bulbCFL  bulbTr">
+                  <td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb2.png">
+                        </td><td width="20%">
+                       <!--<p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                         <p>Fluorescent (CFL) Bulb</p>
+                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                     <tr id="bulbCFL2" class="bulbCFL  bulbTr" style="display:none;">
+                  <td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb2.png">
+                        </td><td width="20%">
+                       <!--<p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                         <p>Fluorescent (CFL) Bulb</p>
+                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                       <tr id="bulbCFL3" class="bulbCFL bulbTr" style="display:none;">
+                  <td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb2.png">
+                        </td><td width="20%">
+                       <!--<p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                         <p>Fluorescent (CFL) Bulb</p>
+                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                    <tr><td colspan="6" class="bulbCFL" style="background-color:#7db8b5; opacity:0.65;">
+                    	<p class="darkgrey" id="add">+ Add more Fluorescen(CFL) Bulb Group</p>
+                    </td></tr>
+                    
+                     <tr id="bulbLED1" class="bulbLED bulbTr">
+                  <td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb3.png">
+                        </td><td width="20%">
+                     <!--  <p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                            
+                            <p>LED Bulb</p>                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                     <tr id="bulbLED2" class="bulbLED bulbTr" style="display:none;">
+                  <td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb3.png">
+                        </td><td width="20%">
+                     <!--  <p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                            
+                            <p>LED Bulb</p>                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                     <tr id="bulbLED3" class="bulbLED bulbTr" style="display:none;">
+                  <td width="5%">                        
+                        <img class="bulbImg" src="images/icon_bulb3.png">
+                        </td><td width="20%">
+                     <!--  <p>Bulb Type:<br>
+                      		<select name="Bulb Type" id="bulbType" class="bulb" onchange="dyOption( this, this.id,'bulbWa')">
+                                <option value="basic">Basic Incandescent</option>
+                                <option value="CFL">Fluorescen(CFL)</option>
+                                <option value="LED">LED</option>
+                            </select></p>-->
+                            
+                            <p>LED Bulb</p>                            
+                         
+                        </td>
+                        <td width="15%">
+                           <p> Number: <br><input type="text" name="number" id="bulbNo" class="bulb"  size="3" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        	<p>Wattage:<br>
+                      		<select name="wattage" id="bulbWa" class="bulb">
+                                <option value="25">25</option>
+                                <option value="40">40</option>
+                                <option value="60">60(typical)</option>
+                                <option value="75">75</option>
+                                <option value="100">100</option>
+                            </select></p>
+                        </td>
+                        <td width="20%">
+                       	  <p>Hours Used per day: <br><input type="text" name="firstname" id="bulbHour" class="bulb"  size="4" value="0"></p>
+                        </td>
+                        <td width="20%">
+                        <p id="bulbCost"></p>
+                        </td>
+                    </tr>
+                    <tr><td colspan="6" class="bulbLED" style="background-color:#7db8b5; opacity:0.65;">
+                    	<p class="darkgrey" id="add">+ Add more LED Bulb Group</p>
+                    </td></tr>                    
+                    </table>
+                     <div id="monthlyCost"></div>
+					 <div class="prevBtn">previous</div>
+					<div class="nextBtn">next</div>
+				
+				
+				
+
+					
+				</div><!-- end of lighting -->
+                
+                <div id="entertainment" class="category inactiveQuestion">
+                	<div id="tv">
+                        <div id="question">
+                        <p>Please choose the  <br /><span> type, Size, and Usage </span> of your TV? </p>
+                        </div><!-- end of question -->
+                        
+                       <div id="choices">
+                       		<table width="100%">
+                            	<tr>
+                                	<td width="50%">
+                           			<img src="images/tvCRT_a.png" id="tvCRT">                           			
+                    				</td>
+                                    <td width="50%">
+                           			<img src="images/tvLCD_a.png" id="tvLCD">
+                                    </td>
+                                </tr>
+                            </table>
+                       </div><!-- end of #choices -->		
+                        <table width="100%" style="text-align:center;" id="tvTb">
+                             <tr id="tvCRT1" class="tvCRT tvTr">
+                                 <td width="25%">
+                                     <p>CRT TV</p>                            
+                                 </td>
+                                 <td width="25%">
+                                   <p> TV Size:  
+                                      <select name="tvSize" id="tvSize" class="tv"  >
+                                         <option value="19">19&mdash;25</option>
+                                         <option value="25">25&mdash;30</option>
+                                      </select> inch
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Hours Used per day: <input type="text" name="tvHour" id="tvHour" class="tv"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="tvCost"></p>
+                                  </td>
+                              </tr>
+                              <tr id="tvCRT2" class="tvCRT tvTr" style="display:none;">
+                                 <td width="25%">
+                                     <p>CRT TV</p>                            
+                                 </td>
+                                 <td width="25%">
+                                   <p> TV Size:  
+                                      <select name="tvSize" id="tvSize" class="tv"  >
+                                         <option value="19">19&mdash;25</option>
+                                         <option value="25">25&mdash;30</option>
+                                      </select> inch
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Hours Used per day: <input type="text" name="tvHour" id="tvHour" class="tv"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="tvCost"></p>
+                                  </td>
+                              </tr>
+                               <tr id="tvCRT3" class="tvCRT tvTr" style="display:none;">
+                                 <td width="25%">
+                                     <p>CRT TV</p>                            
+                                 </td>
+                                 <td width="25%">
+                                   <p> TV Size:  
+                                     <select name="tvSize" id="tvSize" class="tv"  >
+                                         <option value="19">19&mdash;25</option>
+                                         <option value="25">25&mdash;30</option>
+                                      </select> inch
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Hours Used per day: <input type="text" name="tvHour" id="tvHour" class="tv"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="tvCost"></p>
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                              	<td  class="tvCRT" colspan="5" style="background-color:#7db8b5; opacity:0.65;">
+                                    <p class="darkgrey" id="add">+ Add more CRT Tv</p>
+                                </td>
+                             </tr>
+                             <!-- begin led tv -->
+                             
+                              <tr id="tvLED1" class="tvLED tvTr">
+                                 <td width="25%">
+                                     <p>LED TV</p>                            
+                                 </td>
+                                 <td width="25%">
+                                   <p> TV Size:  
+                                      <select name="tvSize" id="tvSize" class="tv"  >
+                                         <option value="32">32</option>
+                                         <option value="42">42</option>
+                                         <option value="52">52</option>
+                                      </select> inch
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Hours Used per day: <input type="text" name="tvHour" id="tvHour" class="tv"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="tvCost"></p>
+                                  </td>
+                              </tr>
+                              <tr id="tvLED2" class="tvLED tvTr" style="display:none;">
+                                 <td width="25%">
+                                     <p>LED TV</p>                            
+                                 </td>
+                                 <td width="25%">
+                                   <p> TV Size:  
+                                      <select name="tvSize" id="tvSize" class="tv"  >
+                                         <option value="32">32</option>
+                                         <option value="42">42</option>
+                                         <option value="52">52</option>
+                                      </select> inch
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Hours Used per day: <input type="text" name="tvHour" id="tvHour" class="tv"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="tvCost"></p>
+                                  </td>
+                              </tr>
+                               <tr id="tvLED3" class="tvLED tvTr" style="display:none;">
+                                 <td width="25%">
+                                     <p>LED TV</p>                            
+                                 </td>
+                                 <td width="25%">
+                                   <p> TV Size:  
+                                      <select name="tvSize" id="tvSize" class="tv"  >
+                                         <option value="19">19</option>
+                                         <option value="32">32</option>
+                                         <option value="42">42</option>
+                                         <option value="52">52</option>
+                                      </select> inch
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Hours Used per day: <input type="text" name="tvHour" id="tvHour"  class="tv"   size="4" value="0"></p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="tvCost"></p>
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                              	<td  class="tvLED" colspan="5" style="background-color:#7db8b5; opacity:0.65;">
+                                    <p class="darkgrey" id="add">+ Add more LED TV</p>
+                                </td>
+                             </tr>
+                           </table>
+                       
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #tv -->
+                   
+                 <div id="computer" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Please choose the  <br /><span> type and Usage </span> of your computer.  </p>
+                        </div><!-- end of question -->
+                        <div id="choices">
+                        <table width="100%">
+                            	<tr>
+                                	<td width="50%">
+                           			<img src="images/computerD.png" id="computerD">                           			
+                    				</td>
+                                    <td width="50%">
+                           			<img src="images/computerL.png" id="computerL">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>   	
+                        <table width="100%" style="text-align:center;" id="tvTb">
+                             <tr id="compuD1" class="compuD compuTr">
+                                 <td width="33%">
+                                     <p>Desktop Computer</p>                            
+                                 </td>
+                                  <td width="33%">
+                                    <p>Hours Used per day: <input type="text" name="compuHour" id="compuHour" class="compu"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="33%">
+                                    <p id="compuCost"></p>
+                                  </td>
+                              </tr>
+                             <tr id="compuD2" class="compuD compuTr" style="display:none;">
+                                 <td width="33%">
+                                     <p>Desktop Computer</p>                            
+                                 </td>
+                                  <td width="33%">
+                                    <p>Hours Used per day: <input type="text" name="compuHour" id="compuHour" class="compu"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="33%">
+                                    <p id="compuCost"></p>
+                                  </td>
+                              </tr>
+                              <tr id="compuD3" class="compuD compuTr" style="display:none">
+                                 <td width="33%">
+                                     <p>Desktop Computer</p>                            
+                                 </td>
+                                  <td width="33%">
+                                    <p>Hours Used per day: <input type="text" name="compuHour" id="compuHour" class="compu"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="33%">
+                                    <p id="compuCost"></p>
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                              	<td  class="compuD" colspan="3" style="background-color:#7db8b5; opacity:0.65;">
+                                    <p class="darkgrey" id="add">+ Add more desktop computer</p>
+                                </td>
+                             </tr>
+                             <!-- begin laptop computer -->
+                             
+                              <tr id="compuL1" class="compuL compuTr">
+                                 <td width="33%">
+                                     <p>Laptop Computer</p>                            
+                                 </td>
+                                  <td width="33%">
+                                    <p>Hours Used per day: <input type="text" name="compuHour" id="compuHour" class="compu"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="33%">
+                                    <p id="compuCost"></p>
+                                  </td>
+                              </tr>
+                             <tr id="compuL2" class="compuL compuTr" style="display:none;">
+                                 <td width="33%">
+                                     <p>Laptop Computer</p>                            
+                                 </td>
+                                  <td width="33%">
+                                    <p>Hours Used per day: <input type="text" name="compuHour" id="compuHour" class="compu"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="33%">
+                                    <p id="compuCost"></p>
+                                  </td>
+                              </tr>
+                              <tr id="compuL3" class="compuL compuTr" style="display:none">
+                                 <td width="33%">
+                                     <p>Laptop Computer</p>                            
+                                 </td>
+                                  <td width="33%">
+                                    <p>Hours Used per day: <input type="text" name="compuHour" id="compuHour" class="compu"  size="4" value="0"></p>
+                                  </td>
+                                  <td width="33%">
+                                    <p id="compuCost"></p>
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                              	<td  class="compuL" colspan="3" style="background-color:#7db8b5; opacity:0.65;">
+                                    <p class="darkgrey" id="add">+ Add more laptop computer</p>
+                                </td>
+                             </tr>
+                           </table>
+                     	
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #computer -->
+                   
+					 <div id="result" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Entertainment & Home Office Power Consumption </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                                 <table width="60%" id="resultTb">
+                            	
+                                  <tr>
+                                  	<td id="tvIcon" width="65">
+                                    	<img src="images/tvCRT_s.png">
+                                    </td>
+                                  	<td id="tvCost" width="35">
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td id="compuIcon">
+                                    	<img src="images/computerD_s.png">
+                                    </td>    
+                                    <td id="compuCost">
+                                    </td>
+                                  </tr>
+                                            
+								<tr><td></td>
+                                <td id="totalEntertainCost">
+                           			</td>
+                                 </tr>
+                               </table> 
+                                                         
+                        </div>
+                        
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next category</div>
+                    </div><!-- end of #entertainment result-->
+                  </div><!-- end of #entertainment -->
+                  
+                  <div id="kitchen" class="category inactiveQuestion">
+                	<div id="fridge">
+                        <div id="question">
+                        <p>Please choose the  <br /><span> model(year) and size </span> of your refrigerator.  </p>
+                        </div><!-- end of question -->
+                        
+                       <div id="choices">
+                       		<table width="100%">
+                            	<tr>
+                                	<td>
+                           			<img src="images/fridge.png" id="fridge">
+                                    </td>
+                                </tr>
+                            </table>
+                       </div><!-- end of #choices -->		
+                        <table width="100%" style="text-align:center;">
+                             <tr>
+                                 <td width="25%">
+                                   <p> Model (year):  
+                                      <select name="fridgeModel" id="fridgeModel" class="fridge"  >
+                                         <option value="1976">&lt;1976</option>
+                                         <option value="1986">1976&mdash;1986</option>
+                                         <option value="1987">1987&mdash;1989</option>
+                                         <option value="1990">1990&mdash;1992</option>
+                                         <option value="1993">1993&mdash;2000</option>
+                                         <option value="2001">2001&mdash;2010</option>
+                                         <option value="2004">2001&mdash;2004 Energy Star(10%+ better)</option>
+                                         <option value="2008">2004&mdash;2008 Energy Star(15%+ better)</option>
+                                         <option value="2010">2008&mdash;2010 Energy Star(20%+ better)</option>
+                                      </select> 
+                                   </p>
+                                  </td>
+                                  <td width="25%">
+                                    <p>Frideg Capacity: 
+                                     <select name="fridgeSize" id="fridgeSize" class="fridge"  >
+                                         <option value="18">18</option>
+                                         <option value="19">19</option>
+                                         <option value="20">20</option>
+                                         <option value="21">21</option>
+                                         <option value="22">22</option>
+                                         <option value="23">23</option>
+                                         <option value="24">24</option>
+                                         <option value="25">25</option>
+                                         <option value="26">26</option>
+                                      </select>                                     
+                                     cu.ft.</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="fridgeCost"></p>
+                                  </td>
+                              </tr>
+                           </table>
+                       
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #fridge -->
+                   
+                   <div id="cooking">
+                        <div id="question">
+                        <p>Please provide the <br><span>device and time</span><br> you usually use for cooking.</p>
+                        </div><!-- end of question -->
+                        
+                       <div id="choices">
+                       		<table width="100%">
+                            	<tr>
+                                	<td width="33%">
+                           			<img src="images/stove.png" id="stove">
+                                    </td>
+                                    <td width="33%">
+                           			<img src="images/oven.png" id="stove">
+                                    </td>
+                                    <td width="33%">
+                           			<img src="images/microwave.png" id="stove">
+                                    </td>
+                                </tr>
+                            </table>
+                       </div><!-- end of #choices -->		
+                        <table width="100%" style="text-align:center;" id="tvTb">
+                             <tr id="stove">
+                                 <td width="15%">
+                                     <p>Stove</p>                            
+                                 </td>
+                                  <td width="35%">
+                                    <p>Minutes Used per day: <input type="text" name="stoveHour" id="stoveHour" class="stove"  size="4" value="0">Minutes</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p><input type="text" name="stoveFreq" id="stoveFreq" class="stove"  size="4" value="0"> days/week</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="stoveCost"></p>
+                                  </td>
+                              </tr>
+                               <tr id="oven">
+                                 <td width="15%">
+                                     <p>Oven</p>                            
+                                 </td>
+                                  <td width="35%">
+                                    <p>Minutes Used per day: <input type="text" name="ovenHour" id="ovenHour" class="oven"  size="4" value="0">Minutes</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p><input type="text" name="ovenFreq" id="ovenFreq" class="oven"  size="4" value="0"> days/week</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="ovenCost"></p>
+                                  </td>
+                              </tr>
+                               <tr id="stove" class="last">
+                                 <td width="15%">
+                                     <p>Microwave Oven</p>                            
+                                 </td>
+                                  <td width="35%">
+                                    <p>Minutes Used per day: <input type="text" name="microwaveHour" id="microwaveHour" class="microwave"  size="4" value="0">Minutes</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p><input type="text" name="microwaveFreq" id="microwaveFreq" class="microwave"  size="4" value="0"> days/week</p>
+                                  </td>
+                                  <td width="25%">
+                                    <p id="microwaveCost"></p>
+                                  </td>
+                              </tr>
+                         </table>
+                       
+                        <div id="monthlyCost">
+
+                        </div>
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next</div>
+                        
+                   </div><!-- end of #tv -->
+            
+                   
+					 <div id="result" class="inactiveQuestion">
+                        <div id="question">
+                        <p>Kitchen Power Consumption </p>
+                        </div><!-- end of question -->
+                        
+                        <div id="choices">
+                        <table width="60%" id="resultTb">
+                            	
+                                  <tr>
+                                  	<td id="fridgeIcon">
+                                    	<img src="images/fridge_s.png">
+                                    </td>
+                                  	<td id="fridgeCost">
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td id="stoveIcon">
+                                    	<img src="images/stove_s.png">
+                                    </td>    
+                                    <td id="stoveCost">
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td id="ovenIcon">
+                                    	<img src="images/oven_s.png">
+                                    </td>    
+                                    <td id="ovenCost">
+                                    </td>
+                                  </tr>
+                                  
+                                  <tr>
+                                    <td id="microwaveIcon">
+                                    	<img src="images/microwave_s.png">
+                                    </td>    
+                                    <td id="microwaveCost">
+                                    </td>
+                                  </tr>
+                                            
+								<tr><td></td>
+                                <td id="totalKitchenCost">
+                           			</td>
+                                 </tr>
+                               </table> 
+                               
+                         
+                                                         
+                        </div>
+                        
+						<div class="prevBtn">previous</div>
+                        <div class="nextBtn">next category</div>
+                    </div><!-- end of #fridge result-->
+                  </div><!-- end of #kitchen -->
+                  
+                  
+				<div id="analysis_result" class="category inactiveQuestion">
+                	
+               		 <div id="tipWindow1" class="tipWindow">
+                    	<p>Click on the blue bars to check detailed saving tips.  </p>
+                    </div>
+                    
+                	<div id="tipWindow2" class="tipWindow">
+                    	<p>Your selected tips will be stored to your track section. </p>
+                    </div>
+                   
+                </div>	
+				
+				</div><!-- end of content -->
+			</div><!-- end of container -->
+			
+		</div><!-- end of banner -->
+	<div id="footer">
+       
+      
+      </div><!-- end of footer-->
+      
+     
+  
+      <div id="footer_bar">
+    
+    </div><!-- end of footer_bar -->
+    
+         </div><!-- end of wrapper div -->
+
+		 </body>
+		 </html>
+         <script src="js/anaSteps.js"></script>
+		 <script src="js/analysis.js"></script>
+          

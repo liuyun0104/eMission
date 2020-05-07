@@ -1,0 +1,152 @@
+@charset "utf-8";
+/* CSS Document */
+#user-profile{
+	width: 930px;
+	height: 65px;
+	margin: 10px auto;
+	padding: 15px;
+}
+
+#month-tracking{
+	width: 930px;
+	height: 290px;
+	margin: 10px auto;
+	padding: 15px;
+}
+
+#month-compare{
+	width: 620px;
+	height: 285px;
+	float: left;
+	left: 10px;
+}
+#month-compare-friends{
+	width: 300px;
+	height: 285px;
+	float: right;
+	right: 10px;
+}
+
+#activity{
+	width: 960px;
+	height: 25px;
+	margin: 0px auto;
+	padding: 0px;
+}
+
+#activity-me{
+	width: 620px;
+	height: 300px;
+	float: left;
+	left: 0px;
+}
+
+#activity-me-content{	
+	padding: 10px;
+	margin-top: 5px;
+	height: 295px;
+		
+}
+#activity-friends{
+	width: 320px;
+	height: 300px;
+	float: right;
+	right: 10px;
+}
+
+.greyBg{
+	background: rgb(81, 81, 81); /* Fall-back for browsers that don't support rgba */
+    background: rgba(81, 81, 81, .5);
+	box-shadow: 3px 3px 2px #3c3c3c;
+}
+
+.broadcast{
+	width: 305px;
+	height: 75px;
+	border-top: solid 4px #a9c14e;	
+	margin: 10px 0 0 0;
+	padding: 5px;
+}
+
+.broadcast .profile{
+	width: 60px;
+	height: 90px;
+	float: left;
+	text-align:center;	
+}
+
+.broadcast .tip{
+	width: 230px;
+	height: 90px;
+	float: right;
+	text-align: left;
+}
+
+line {
+	stroke: #eee2c1;
+	stroke-width: 1;
+	fill:none;
+	opacity:0.8;
+}
+
+text {
+	fill: #eee2c1;
+	font-size: 12px; 
+	font-family: avantGardeBook, 'Courier New', Courier, monospace; 
+	font-weight:bold;
+}
+
+.xTicks{
+	stroke-dasharray: 2,2;
+	opacity:0.8;
+}
+path{
+	stroke-width: 1;
+	fill: none;
+}
+path.point1 {stroke: #a9c14e;}
+		
+circle.point1, p.point1{
+	fill: #a9c14e;	
+	color: #a9c14e;
+}
+
+path.point2{
+	stroke: #D77861;
+}
+
+circle.point2, p.point2{
+	fill: #D77861; /*dark pink*/
+	color: #D77861; 
+}
+
+path.point3{
+	stroke: #C68C3A;
+}
+
+circle.point3, p.point3{
+	fill: #C68C3A; /*yellow*/
+	color: #C68C3A;
+}
+path.point4{
+	stroke: #49AAC6;
+}
+circle.point4, p.point4{
+	fill: #49AAC6; /*dark blue*/
+	color: #49AAC6;
+}
+
+
+#compare input, #savinglist_todo input{
+	margin: 15px 0 15px 10px;
+}	
+
+#savinglist_todo input{
+	border-top: dotted 1px #f4e8c5;
+	border-bottom:	dotted 1px #f4e8c5;
+}
+.point2, .point3, .point4{
+	/*display: none;*/
+	opacity:0;
+}
+

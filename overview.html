@@ -1,0 +1,236 @@
+<!DOCTYPE html><head>
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>eMission</title>
+
+	</head>
+	
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+	
+	<script src="lib/js/d3_2.7.0/d3.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.geom.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.layout.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
+    <script src="lib/js/jquery-1.6.2.min.js"></script>
+	<script src="lib/js/jquery.transit.min.js"></script>
+	<body>
+
+        <div id="wrapper">
+			<div id="banner-wrapper">
+    		<div id="banner">
+            	<a href="index.html"><img src="images/logo.png" /></a>
+                <div id="login">
+                	<p>Sign Up | Login</p>
+                </div>
+            </div><!-- end of banner div -->
+			
+		</div><!-- end of banner-wrapper -->
+		<div id="selection-wrapper">
+					<div id="menu">
+						<ol>
+							<li class="active">
+							<img src="images/menu_compare.png" alt="compare"><br>
+							Overview</li>
+							<li>
+							<a href="analyze.html"><img src="images/menu_analyse.png" alt="analyse"><br>
+							Analyze</a></li>
+							<li>
+							<a href="track.html"><img src="images/menu_track.png" alt="track"><br>
+							Track</a>
+							</li>
+						</ol>
+					</div><!-- end of menu -->
+					
+				</div><!-- end of selection-wrapper -->
+			<div id="container">
+				<div id="progress">
+					<!--<ol class="progtrckr" data-progtrckr-steps="4">-->
+                    <ol class="progtrckr">
+						<li class="progtrckr-done">Number of People</li><!--
+					 --><li class="progtrckr-todo">Living Space</li><!--
+					 --><li class="progtrckr-todo">Monthly Bill</li><!--
+					 --><li class="progtrckr-todo">Result</li>
+					</ol>
+				</div><!-- end of progress -->
+				
+				
+				<div id="content">
+				<div id="number_of_people">
+					<div id="question">
+                    <p>Let’s start from some quick questions of your living condition. </p>
+					<p>Please select <br /><span> Number of People</span><br>in your living space. </p>
+					</div><!-- end of question -->
+					
+				<div id="adult">
+				<img src="images/adult_d.png" class="adultInactive" />
+					<table id="adultNumBtn" style="text-align:center;">
+                    <tr><td colspan="3" class="numBtnTitle"><p>Number of adults:</p></td></tr>
+					<tr>
+						<td class="numBtnMinus numBtn">-</td>
+						<td class="numBtnResult numBtn">0</td>
+						<td class="numBtnPlus numBtn">+</td>
+					</tr>
+				</table>
+				</div><!-- end of adult -->
+				<div id="kid">
+				<img src="images/kid_d.png" class="kidInactive" />
+				<table id="kidNumBtn" style="text-align:center;">
+                	<tr><td colspan="3" class="numBtnTitle"><p>Number of kids:</p></td></tr>
+					<tr>
+						<td class="numBtnMinus numBtn">-</td>
+						<td class="numBtnResult numBtn">0</td>
+						<td class="numBtnPlus numBtn numBtn">+</td>
+					</tr>
+				</table>
+				</div>
+                <div class="prevBtn">previous</div>
+				<div class="nextBtn">next</div>
+				</div><!-- end of number_of_people -->
+				
+				<div id="size_of_house" class="inactiveQuestion">
+					<div id="question">
+					<p>please select <br /><span> Size of Your </span><br /> living space. </p>
+					</div><!-- end of question -->
+					
+					<div id="image_of_house">
+						<!--<img id="house1" class="sHouse" src="images/house.png" style="width: 140px; height: 103.5px;">
+						<img id="house2" class="sHouse" style="left:400px;" src="images/house.png">
+						<img id="house3" class="sHouse" style="left:600px;" src="images/house.png">
+						<img id="house4" class="fence" style="left:350px;" src="images/fence.png">
+						<img id="house5" class="fence" style="left:600px;" src="images/fence.png">-->
+					</div>
+					<table id="houzeSizeBtn" class="centerBtn" style="text-align:center;">
+					<tr>
+						<td class="numBtnMinus numBtn">-</td>
+						<td class="numBtnResult numBtn">0</td>
+						<td class="numBtnPlus numBtn">+</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="numBtnTitle">sqf</td>
+					</tr>
+				</table>
+                    <div class="prevBtn">previous</div>
+                    <div class="nextBtn">next</div>
+				</div>
+				
+				<div id="utility_bill" class="inactiveQuestion">
+					<div id="question">
+					<p>How much did you spend on your  <br /><span> Electricity Bill </span><br /> last month? </p>
+                    
+					</div><!-- end of question -->
+					 <div id="choices">
+                     	<table width="100%">
+                        	<tr>
+                                <td>
+                                 <p> Utility Bill:  <input type="text" name="utiltiy" id="utilityValue" size="15" maxlength="30"value="0"> Dollars</p>
+                                </td>
+                        	</tr>
+                     	</table> 
+                         <div id="question">
+                         <br>
+                         <p><span>What state</span><br> are you located in?</p> </div>
+                         <table width="100%">
+                        	<tr>
+                            	<td>
+                                <p> State:  
+                                <select name="State"> 
+                                    <option value="" selected="selected">Select a State</option> 
+                                    <option value="AL">Alabama</option> 
+                                    <option value="AK">Alaska</option> 
+                                    <option value="AZ">Arizona</option> 
+                                    <option value="AR">Arkansas</option> 
+                                    <option value="CA">California</option> 
+                                    <option value="CO">Colorado</option> 
+                                    <option value="CT">Connecticut</option> 
+                                    <option value="DE">Delaware</option> 
+                                    <option value="DC">District Of Columbia</option> 
+                                    <option value="FL">Florida</option> 
+                                    <option value="GA">Georgia</option> 
+                                    <option value="HI">Hawaii</option> 
+                                    <option value="ID">Idaho</option> 
+                                    <option value="IL">Illinois</option> 
+                                    <option value="IN">Indiana</option> 
+                                    <option value="IA">Iowa</option> 
+                                    <option value="KS">Kansas</option> 
+                                    <option value="KY">Kentucky</option> 
+                                    <option value="LA">Louisiana</option> 
+                                    <option value="ME">Maine</option> 
+                                    <option value="MD">Maryland</option> 
+                                    <option value="MA">Massachusetts</option> 
+                                    <option value="MI">Michigan</option> 
+                                    <option value="MN">Minnesota</option> 
+                                    <option value="MS">Mississippi</option> 
+                                    <option value="MO">Missouri</option> 
+                                    <option value="MT">Montana</option> 
+                                    <option value="NE">Nebraska</option> 
+                                    <option value="NV">Nevada</option> 
+                                    <option value="NH">New Hampshire</option> 
+                                    <option value="NJ">New Jersey</option> 
+                                    <option value="NM">New Mexico</option> 
+                                    <option value="NY">New York</option> 
+                                    <option value="NC">North Carolina</option> 
+                                    <option value="ND">North Dakota</option> 
+                                    <option value="OH">Ohio</option> 
+                                    <option value="OK">Oklahoma</option> 
+                                    <option value="OR">Oregon</option> 
+                                    <option value="PA">Pennsylvania</option> 
+                                    <option value="RI">Rhode Island</option> 
+                                    <option value="SC">South Carolina</option> 
+                                    <option value="SD">South Dakota</option> 
+                                    <option value="TN">Tennessee</option> 
+                                    <option value="TX">Texas</option> 
+                                    <option value="UT">Utah</option> 
+                                    <option value="VT">Vermont</option> 
+                                    <option value="VA">Virginia</option> 
+                                    <option value="WA">Washington</option> 
+                                    <option value="WV">West Virginia</option> 
+                                    <option value="WI">Wisconsin</option> 
+                                    <option value="WY">Wyoming</option>
+                                    </select>
+                                    </p>
+                                </td>
+                        	</tr>
+                     	</table>                           
+                      </div>
+					<!--<form name="input" method="get">
+						<input type="text" name="utility" id="utilityValue" size="30" maxlength="70">
+						<input type="submit" value="Submit" id="utilitySubmit">
+					</form>-->
+                    <div class="prevBtn">previous</div>
+					<div class="nextBtn">next</div>
+				</div>
+				
+				<div id="utility_result" class="inactiveQuestion">
+					
+				<div id="compare_conclusion">
+                    <p><span>Wonder Why?</span><br> Find out through our Analyze feature</p>
+                    <a href="analyze.html"><div class="btn">check</div></a>
+                </div>
+                	
+				</div>
+				
+				</div><!-- end of content -->
+			</div><!-- end of container -->
+			
+		</div><!-- end of banner -->
+	<div id="footer">
+       
+      
+      </div><!-- end of footer-->
+      
+     
+  
+      <div id="footer_bar">
+    
+    </div><!-- end of footer_bar -->
+    
+         </div><!-- end of wrapper div -->
+
+		 </body>
+		 </html>
+		 <script src="js/compare.js"></script>

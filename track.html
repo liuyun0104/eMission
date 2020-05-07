@@ -1,0 +1,171 @@
+<!DOCTYPE html><head>
+
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>eMission</title>
+
+	</head>
+	
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/tracking.css" media="screen" />
+	
+	<script src="lib/js/d3_2.7.0/d3.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.geom.js"></script>
+    <script src="lib/js/d3_2.7.0/d3.layout.js"></script>
+  <!--  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>-->
+    <script src="lib/js/jquery-1.6.2.min.js"></script>
+   
+	<script src="lib/js/jquery.transit.min.js"></script>
+	<body>
+
+        <div id="wrapper">
+			<div id="banner-wrapper">
+    		<div id="banner">
+            	<a href="index.html"><img src="images/logo.png" /></a>
+                <div id="login">
+                	<p>Sign Up | Login</p>
+                </div>
+            </div><!-- end of banner div -->
+			
+		</div><!-- end of banner-wrapper -->
+		<div id="selection-wrapper">
+					<div id="menu">
+						<ol>
+							<li>
+							<a href="overview.html"><img src="images/menu_compare.png" alt="compare"><br>
+							Overview</a></li>
+							<li>
+							<a href="analyze.html"><img src="images/menu_analyse.png" alt="analyse"><br>
+							Analyze</a></li>
+							<li class="active"><img src="images/menu_track.png" alt="track"><br>
+							Track
+							</li>
+						</ol>
+                         <div id="tipNum" class="circle">
+                    	<p>1</p>
+                    </div>
+					</div><!-- end of menu -->
+					
+				</div><!-- end of selection-wrapper -->
+			<div id="container">
+				<div id="user-profile" class="greyBg">
+                	<table width="100%">
+                    	<tr><td width="10%"><img src="images/profilePic_user1.jpg" alt="user profile"></td>
+                        <td width="30%">
+                	<h3 class="green">Jessie</h3>
+                    <p>
+                    San Francisco, CA<br>
+                    Joined on Jan 11, 2013
+                    </p></td>
+                    <td width="10%">
+                    <h4 class="green">Friends /5</h4></td>
+                    <td width="50%">
+                    <img src="images/profilePic_user2.jpg" alt="user profile">
+                    <img src="images/profilePic_user3.jpg" alt="user profile">
+                    <img src="images/profilePic_user4.jpg" alt="user profile">
+                     <img src="images/profilePic_user5.jpg" alt="user profile">
+                      <img src="images/profilePic_user5.jpg" alt="user profile">
+                    </td></tr></table>
+                </div>
+                <div id="month-tracking" class="greyBg">                	
+                    <div id="month-compare">
+                        <h4 class="green"> Your Monthly Power Consumption Tracking <span class="blue"> &lt; 2013 &gt;</span></h4>
+                    </div>
+                    <div id="month-compare-friends">
+                    	<h4 class="green"> Compare With </h4>
+                        <form name="compare" id="compare">
+                            <p id="point1"> <input type="checkbox" name="friend" id="point1" checked="yes" /> Your Usage </p>
+                            
+                            <p id="point2"><input type="checkbox" name="friend" id="point2"  /> Friend A  </p>
+                            
+                            <p id="point3"> <input type="checkbox" name="friend" id="point3"  /> Friend B </p>
+                            
+                            <p id="point4"> <input type="checkbox" name="friend" id="point4"  /> Friend C </p>
+                            
+                            
+                            
+                            </form>
+                    </div>
+                </div>
+                <div id="activity">
+                	<div id="activity-me">
+                    <h4 class="green"> Recent Action  <span class="blue"> &lt; March, 2013 &gt;</span></h4>
+                   		<div id="activity-me-content" class="greyBg">
+                        	<p class="blue">You saved 25kwh last month, please confirm the actions you took for that achievement. </p>
+                             <form name="list" id="savinglist_todo">
+                                <p id="point1"> <input type="checkbox" name="friend" id="point1" checked="yes" /> Change your 4 basic incandescent bulbs to CFL bulbs. </p>
+                                
+                                <p id="point2"><input type="checkbox" name="friend" id="point2"  /> Turn the thermostat of your water heater down.  </p>
+                                
+                                <p id="point3"> <input type="checkbox" name="friend" id="point3"  /> Turn off lights when you're not using them, even for just a few minutes. </p>
+                                
+                                <p id="point4"> <input type="checkbox" name="friend" id="point4"  /> Clean or replace your AC filter every month. </p>
+                                
+                                
+                                
+                                </form>
+                                <div class="btn">Confirm</div>
+                        </div>
+                    </div>
+                    <div id="activity-friends">
+                    <h4 class="green"> Friends' Broadcast</h4>
+                    	<div class="broadcast greyBg">
+                        	<div class="profile">
+                            	<img src="images/profilePic_user2.jpg" alt="user profile">
+                                <p>Friend A</p>
+                            
+                            </div>
+                            <div class="tip">
+                            	<p>I saved 25 kwh / $4 by: </p><br>
+                                <p class="blue">You have one bulb that’s 150w, maybe you can switch it to a lower one, like 100w.</p>
+                            </div>
+                        </div>
+                        <div class="broadcast greyBg">
+                       		 <div class="profile">
+                            	<img src="images/profilePic_user3.jpg" alt="user profile">
+                                <p>Friend B</p>
+                            
+                            </div>
+                            <div class="tip">
+                            	<p>I saved 50 kwh / $8 by: </p><br>
+                                <p class="blue">Turn the ice maker off if it’s not needed. </p>
+                            </div>
+                        </div>
+                         <div class="broadcast greyBg">
+                       		 <div class="profile">
+                            	<img src="images/profilePic_user4.jpg" alt="user profile">
+                                <p>friend C</p>
+                            
+                            </div>
+                            <div class="tip">
+                            	<p>I saved 30 kwh / $4.8 by: </p><br>
+                                <p class="blue">Wash your laundry in cold water.  </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div><!-- end of container -->
+			
+		</div><!-- end of banner -->
+	<div id="footer">
+       
+      
+      </div><!-- end of footer-->
+      
+     
+  
+      <div id="footer_bar">
+    
+    </div><!-- end of footer_bar -->
+    
+         </div><!-- end of wrapper div -->
+
+		 </body>
+		 </html>
+         <script src="js/lineChart.js"></script>
+		 <script src="js/analysis.js"></script>
+          
